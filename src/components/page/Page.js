@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import { TasksContext } from "../../contexts/TasksContext";
 import { UserContext } from "../../contexts/UserContext";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -9,6 +10,7 @@ import Loader from "./Loader";
 
 export default function Page({ isLoading, children }) {
   const { user } = useContext(UserContext);
+  const { tasksStatus, setTasksStatus } = useContext(TasksContext);
   const navigate = useNavigate();
 
   useEffect(() => {

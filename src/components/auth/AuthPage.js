@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import logo from "../../assets/logo.svg";
-import { StyledLink } from "../../styles/Link.styled";
 import AuthForm from "./AuthForm";
 
 export default function AuthPage({
@@ -28,7 +28,7 @@ export default function AuthPage({
         handleForm={handleForm}
         handleSubmit={handleSubmit}
       />
-      <StyledLink to={link}>{linkText}</StyledLink>
+      <AuthLink to={link}>{linkText}</AuthLink>
     </Container>
   );
 }
@@ -56,4 +56,12 @@ const Logo = styled.div`
     color: #126ba5;
     font: 69px/86px "Playball", cursive;
   }
+`;
+
+const AuthLink = styled(Link)`
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration-line: underline;
+
+  color: #52b6ff;
 `;

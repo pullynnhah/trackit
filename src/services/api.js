@@ -10,7 +10,7 @@ function generateHeader(token) {
   };
 }
 
-function signUp(body) {
+function signup(body) {
   return axios.post(`${BASE_URL}/auth/sign-up`, body);
 }
 
@@ -44,7 +44,7 @@ function deleteHabit(id, token) {
 }
 
 export {
-  signUp,
+  signup,
   login,
   createHabit,
   toggleHabit,

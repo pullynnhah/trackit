@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import AuthPage from "../components/AuthPage";
-import { SIGNUP_FIELDS } from "../contants/fields";
+import { SIGNUP_FIELDS } from "../constants/fields";
 import { signup } from "../services/api";
 
 export default function LoginPage() {
@@ -36,6 +36,8 @@ export default function LoginPage() {
         window.alert(text);
         const newForm = { ...form };
         for (const name in newForm) newForm[name] = "";
+        setForm(newForm);
+
         setIsLoading(false);
       });
   }

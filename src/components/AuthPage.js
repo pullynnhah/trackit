@@ -10,6 +10,7 @@ export default function AuthPage({
   link,
   linkText,
   isLoading,
+  form,
   handleForm,
   handleSubmit
 }) {
@@ -23,6 +24,7 @@ export default function AuthPage({
         fields={fields}
         btnText={btnText}
         isLoading={isLoading}
+        form={form}
         handleForm={handleForm}
         handleSubmit={handleSubmit}
       />

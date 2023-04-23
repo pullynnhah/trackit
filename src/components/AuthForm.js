@@ -3,11 +3,18 @@ import styled from "styled-components";
 import { StyledInput } from "../styles/Input.styled";
 import DotsLoader from "./DotsLoader";
 
-export default function AuthForm({ fields, btnText, isLoading, handleForm, handleSubmit }) {
+export default function AuthForm({ fields, btnText, isLoading, form, handleForm, handleSubmit }) {
   return (
     <Form onSubmit={handleSubmit}>
       {fields.map(f => (
-        <StyledInput disabled={isLoading} key={f.name} {...f} onChange={handleForm} required />
+        <StyledInput
+          disabled={isLoading}
+          key={f.name}
+          {...f}
+          value={form[f.name]}
+          onChange={handleForm}
+          required
+        />
       ))}
       <Button type="submit" disabled={isLoading}>
         {isLoading ? <DotsLoader width="51" height="13" /> : btnText}

@@ -114,6 +114,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

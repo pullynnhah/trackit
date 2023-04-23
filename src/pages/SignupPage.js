@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AuthPage from "../components/AuthPage";
+import AuthPage from "../components/auth/AuthPage";
 import { SIGNUP_FIELDS } from "../constants/fields";
 import { signup } from "../services/api";
 

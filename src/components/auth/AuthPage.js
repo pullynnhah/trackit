@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import logo from "../assets/logo.svg";
-import { StyledLink } from "../styles/Link.styled";
+import logo from "../../assets/logo.svg";
+import { StyledLink } from "../../styles/Link.styled";
 import AuthForm from "./AuthForm";
 
 export default function AuthPage({

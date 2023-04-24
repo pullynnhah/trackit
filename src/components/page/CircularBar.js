@@ -1,15 +1,31 @@
 import "react-circular-progressbar/dist/styles.css";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import styled from "styled-components";
 
 import { TasksContext } from "../../contexts/TasksContext";
-import { calcPercentage } from "../../utils/calcPercentage";
+import { getTodayHabits } from "../../services/api";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function CircularBar() {
-  const { tasksStatus } = useContext(TasksContext);
-  const percentage = calcPercentage({ ...tasksStatus });
+  const { percentage, setPercentage } = useContext(TasksContext);
+  const {
+    user: { token }
+  } = useContext(UserContext);
+
+  useEffect(() => {
+    if (percentage === null) {
+      getTodayHabits(token)
+        .then(res => {
+          setPercentage(
+            res.data.length &&
+              Math.round((res.data.filter(habit => habit.done).length * 100) / res.data.length)
+          );
+        })
+        .catch(err => alert(err.response.data.message));
+    }
+  }, [token, percentage, setPercentage]);
   return (
     <Container>
       <CircularProgressbar

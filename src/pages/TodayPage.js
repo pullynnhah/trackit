@@ -22,11 +22,12 @@ import { calcPercentage } from "../utils/calcPercentage";
 export default function TodayPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [habits, setHabits] = useState(null);
+
   const {
     user: { token }
   } = useContext(UserContext);
+  const { percentage, setPercentage } = useContext(TasksContext);
 
-  const { tasksStatus } = useContext(TasksContext);
   dayjs.extend(updateLocale);
   dayjs.locale("pt-br");
   dayjs.updateLocale("pt-br", {
@@ -38,17 +39,20 @@ export default function TodayPage() {
     getTodayHabits(token)
       .then(res => {
         setHabits(res.data);
+        setPercentage(
+          res.data.length &&
+            Math.round((res.data.filter(habit => habit.done).length * 100) / res.data.length)
+        );
         setIsLoading(false);
       })
       .catch(err => {
         alert(err.response.data.message);
         setIsLoading(false);
       });
-  }, [token]);
+  }, [token, setPercentage]);
 
   useEffect(getHabits, [getHabits]);
 
-  const percentage = calcPercentage({ ...tasksStatus });
   return (
     <Page isLoading={isLoading}>
       <Header started={percentage !== 0}>

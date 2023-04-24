@@ -4,11 +4,13 @@ import { BsTrash } from "react-icons/bs";
 import styled from "styled-components";
 
 import { UserContext } from "../../contexts/UserContext";
-import { deleteHabit } from "../../services/api";
+import { deleteHabit, getTodayHabits } from "../../services/api";
 import Weekdays from "./Weekdays";
 import { HabitTitle } from "../../styles/HabitTitle";
+import { TasksContext } from "../../contexts/TasksContext";
 
 export default function Habit({ id, name, days, getHabits }) {
+  const { setPercentage } = useContext(TasksContext);
   const {
     user: { token }
   } = useContext(UserContext);
@@ -16,7 +18,17 @@ export default function Habit({ id, name, days, getHabits }) {
   function removeHabit(id) {
     if (window.confirm("Deseja mesmo deletar este hábito?")) {
       deleteHabit(id, token)
-        .then(getHabits)
+        .then(res => {
+          getHabits();
+          getTodayHabits(token)
+            .then(res => {
+              setPercentage(
+                res.data.length &&
+                  Math.round((res.data.filter(habit => habit.done).length * 100) / res.data.length)
+              );
+            })
+            .catch(err => alert(err.response.data.message));
+        })
         .catch(err => alert(err.response.data.message));
     }
   }

@@ -2,10 +2,11 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { UserContext } from "../../contexts/UserContext";
-import { createHabit } from "../../services/api";
+import { createHabit, getTodayHabits } from "../../services/api";
 import { Input } from "../../styles/Input";
 import DotsLoader from "../DotsLoader";
 import WeekdaysButtons from "./WeekdaysButtons";
+import { TasksContext } from "../../contexts/TasksContext";
 
 export default function NewHabitForm({
   newHabit,
@@ -17,6 +18,7 @@ export default function NewHabitForm({
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const { setPercentage } = useContext(TasksContext);
   const {
     user: { token }
   } = useContext(UserContext);
@@ -40,6 +42,14 @@ export default function NewHabitForm({
           setSelectedIds([]);
           setIsOpen(false);
           getHabits();
+          getTodayHabits(token)
+            .then(res => {
+              setPercentage(
+                res.data.length &&
+                  Math.round((res.data.filter(habit => habit.done).length * 100) / res.data.length)
+              );
+            })
+            .catch(err => alert(err.response.data.message));
         })
         .catch(err => {
           const { message, details } = err.response.data;

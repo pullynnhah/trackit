@@ -16,12 +16,11 @@ export default function App() {
     return storeValue && JSON.parse(storeValue);
   });
 
-  // TODO: implement the percentage of the circular-progress-bar
-  const [tasksStatus, setTasksStatus] = useState({ total: 10, completed: 5 });
+  const [percentage, setPercentage] = useState(null);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <TasksContext.Provider value={{ tasksStatus, setTasksStatus }}>
+      <TasksContext.Provider value={{ percentage, setPercentage }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginPage />} />

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { HabitTitle } from "../../styles/HabitTitle";
 import Icon from "./Icon";
 
-export default function HabitCard({ id, name, done, currentSequence, highestSequence }) {
+export default function HabitCard({ id, name, done, currentSequence, highestSequence, getHabits }) {
   return (
     <Container>
       <div>
@@ -23,7 +23,7 @@ export default function HabitCard({ id, name, done, currentSequence, highestSequ
           </p>
         </Wrapper>
       </div>
-      <Icon done={done} />
+      <Icon id={id} done={done} getHabits={getHabits} />
     </Container>
   );
 }

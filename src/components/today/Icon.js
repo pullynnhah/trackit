@@ -1,11 +1,22 @@
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { IconContext } from "react-icons";
 import { BsCheck } from "react-icons/bs";
 import styled from "styled-components";
+import { toggleHabit } from "../../services/api";
 
-export default function Icon({ done }) {
+export default function Icon({ id, done, getHabits }) {
+  const {
+    user: { token }
+  } = useContext(UserContext);
+  function toggleCheck() {
+    toggleHabit(id, done, token)
+      .then(getHabits)
+      .catch(err => alert(err.response.data.message));
+  }
   return (
     <IconContext.Provider value={{ color: "#fff", size: "69px" }}>
-      <Wrapper done={done}>
+      <Wrapper done={done} onClick={toggleCheck}>
         <BsCheck />
       </Wrapper>
     </IconContext.Provider>

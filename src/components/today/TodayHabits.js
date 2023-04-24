@@ -5,7 +5,7 @@ export default function TodayHabits({ habits, getHabits }) {
   return (
     <Container>
       {habits?.map(h => (
-        <HabitCard key={h.id} {...h} />
+        <HabitCard key={h.id} {...h} getHabits={getHabits} />
       ))}
     </Container>
   );

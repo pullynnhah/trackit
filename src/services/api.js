@@ -23,7 +23,7 @@ function createHabit(body, token) {
 }
 
 function toggleHabit(id, isChecked, token) {
-  const check = isChecked ? "check" : "uncheck";
+  const check = isChecked ? "uncheck" : "check";
   return axios.post(`${BASE_URL}/habits/${id}/${check}`, {}, generateHeader(token));
 }
 

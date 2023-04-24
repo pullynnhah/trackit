@@ -10,8 +10,7 @@ export default function CircularBar() {
   const {
     tasksStatus: { total, completed }
   } = useContext(TasksContext);
-  const percentage = Math.round((100 * completed) / total);
-
+  const percentage = completed && Math.round((100 * completed) / total);
   return (
     <Container>
       <CircularProgressbar

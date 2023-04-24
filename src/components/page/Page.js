@@ -26,7 +26,7 @@ export default function Page({ isLoading, children }) {
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  padding: 70px 5vw;
+  min-height: 100vh;
+  padding: 70px 5vw 110px;
   background: #f2f2f2;
 `;

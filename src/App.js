@@ -17,7 +17,7 @@ export default function App() {
   });
 
   // TODO: implement the percentage of the circular-progress-bar
-  const [tasksStatus, setTasksStatus] = useState({ total: 10, completed: 6 });
+  const [tasksStatus, setTasksStatus] = useState({ total: 10, completed: 5 });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

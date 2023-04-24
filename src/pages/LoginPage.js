@@ -7,14 +7,13 @@ import { UserContext } from "../contexts/UserContext";
 import { login } from "../services/api";
 
 export default function LoginPage() {
-  const [form, setForm] = useState(
-    LOGIN_FIELDS.reduce((acc, field) => ({ ...acc, [field.name]: "" }), {})
-  );
+  const [form, setForm] = useState(LOGIN_FIELDS.reduce((acc, f) => ({ ...acc, [f.name]: "" }), {}));
 
   const { user, setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
   function handleForm(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });

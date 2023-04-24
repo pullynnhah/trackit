@@ -7,6 +7,7 @@ import { PageTitle } from "../styles/PageTitle";
 import styled from "styled-components";
 import HabitsCalendar from "../components/history/HabitsCalendar";
 import { getHistory } from "../services/api";
+import HabitsHistory from "../components/history/HabitsHistory";
 
 export default function HistoryPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +56,10 @@ export default function HistoryPage() {
         <PageTitle>Histórico</PageTitle>
       </Header>
       <HabitsCalendar redDates={redDates} greenDates={greenDates} setDisplayDate={setDisplayDate} />
-      {/* <HistoryHabits /> */}
+      <HabitsHistory
+        habits={history?.[displayDate] ?? []}
+        isAllDone={greenDates.includes(displayDate)}
+      />
     </Page>
   );
 }

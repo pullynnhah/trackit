@@ -8,9 +8,5 @@ export default function TodayPage() {
 
   const { user } = useContext(UserContext);
 
-  return (
-    <Page {...user} isLoading={isLoading}>
-      TodayPage
-    </Page>
-  );
+  return <Page isLoading={isLoading}>TodayPage</Page>;
 }

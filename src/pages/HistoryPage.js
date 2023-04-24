@@ -8,9 +8,5 @@ export default function HistoryPage() {
 
   const { user } = useContext(UserContext);
 
-  return (
-    <Page {...user} isLoading={isLoading}>
-      HistoryPage
-    </Page>
-  );
+  return <Page isLoading={isLoading}>HistoryPage</Page>;
 }

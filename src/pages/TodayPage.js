@@ -1,12 +1,74 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+
+import dayjs from "dayjs";
+import "dayjs/locale/pt-br";
+import styled from "styled-components";
+import updateLocale from "dayjs/plugin/updateLocale";
 
 import Page from "../components/page/Page";
+import TodayHabits from "../components/today/TodayHabits";
+
+import { WEEKDAYS } from "../constants/weekdays";
+
 import { UserContext } from "../contexts/UserContext";
+import { TasksContext } from "../contexts/TasksContext";
+
+import { getTodayHabits } from "../services/api";
+
+import { PageTitle } from "../styles/PageTitle";
+
+import { calcPercentage } from "../utils/calcPercentage";
 
 export default function TodayPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [habits, setHabits] = useState(null);
+  const {
+    user: { token }
+  } = useContext(UserContext);
 
-  const { user } = useContext(UserContext);
+  const { tasksStatus } = useContext(TasksContext);
+  dayjs.extend(updateLocale);
+  dayjs.locale("pt-br");
+  dayjs.updateLocale("pt-br", {
+    weekdays: WEEKDAYS
+  });
 
-  return <Page isLoading={isLoading}>TodayPage</Page>;
+  const getHabits = useCallback(() => {
+    setIsLoading(true);
+    getTodayHabits(token)
+      .then(res => {
+        setHabits(res.data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        alert(err.response.data.message);
+        setIsLoading(false);
+      });
+  }, [token]);
+
+  useEffect(getHabits, [getHabits]);
+
+  const percentage = calcPercentage({ ...tasksStatus });
+  return (
+    <Page isLoading={isLoading}>
+      <Header started={percentage !== 0}>
+        <PageTitle>{dayjs().format("dddd, DD/MM")}</PageTitle>
+        <p>
+          {percentage ? `${percentage}% dos hábitos concluídos` : "Nenhum hábito concluído ainda"}
+        </p>
+      </Header>
+      <TodayHabits habits={habits} getHabits={getHabits} />
+    </Page>
+  );
 }
+
+const Header = styled.header`
+  margin: 28px 0;
+
+  p {
+    font-size: 18px;
+    line-height: 22px;
+
+    color: ${props => (props.started ? "#8FC549" : "#BABABA")};
+  }
+`;

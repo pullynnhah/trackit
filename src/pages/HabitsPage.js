@@ -1,12 +1,16 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+
 import styled from "styled-components";
 
+import Page from "../components/page/Page";
 import Habits from "../components/habits/Habits";
 import NewHabitForm from "../components/habits/NewHabitForm";
-import Page from "../components/page/Page";
+
 import { UserContext } from "../contexts/UserContext";
+
 import { listHabits } from "../services/api";
-import { Title } from "../styles/Title";
+
+import { PageTitle } from "../styles/PageTitle";
 
 export default function HabitsPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,10 +41,10 @@ export default function HabitsPage() {
 
   return (
     <Page isLoading={isLoading}>
-      <Container>
-        <Title>Meus Hábitos</Title>
+      <Header>
+        <PageTitle>Meus Hábitos</PageTitle>
         <button onClick={() => setIsOpen(!isOpen)}>+</button>
-      </Container>
+      </Header>
       {isOpen && (
         <NewHabitForm
           newHabit={newHabit}
@@ -56,7 +60,7 @@ export default function HabitsPage() {
   );
 }
 
-const Container = styled.div`
+const Header = styled.header`
   margin: 21px 0;
   display: flex;
   justify-content: space-between;

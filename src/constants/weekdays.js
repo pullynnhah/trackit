@@ -1,1 +1,1 @@
-export const WEEKDAYS = ["D", "S", "T", "Q", "Q", "S", "S"];
+export const WEEKDAYS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];

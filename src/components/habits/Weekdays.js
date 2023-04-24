@@ -7,7 +7,7 @@ export default function Weekdays({ selectedIds }) {
     <Container>
       {WEEKDAYS.map((w, index) => (
         <Weekday key={index} isSelected={selectedIds.includes(index)}>
-          {w}
+          {w[0]}
         </Weekday>
       ))}
     </Container>

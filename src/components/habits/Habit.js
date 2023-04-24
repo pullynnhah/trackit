@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { UserContext } from "../../contexts/UserContext";
 import { deleteHabit } from "../../services/api";
 import Weekdays from "./Weekdays";
+import { HabitTitle } from "../../styles/HabitTitle";
 
 export default function Habit({ id, name, days, getHabits }) {
   const {
@@ -21,7 +22,7 @@ export default function Habit({ id, name, days, getHabits }) {
   }
   return (
     <Container>
-      <p>{name}</p>
+      <HabitTitle>{name}</HabitTitle>
       <Weekdays selectedIds={days} />
       <IconContext.Provider value={{ color: "#666", size: "15px" }}>
         <Wrapper onClick={() => removeHabit(id)}>
@@ -47,12 +48,6 @@ const Container = styled.div`
   position: relative;
 
   gap: 8px;
-
-  p {
-    color: #666;
-    font-size: 18px;
-    line-height: 22px;
-  }
 `;
 
 const Wrapper = styled.div`

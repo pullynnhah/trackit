@@ -5,12 +5,11 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import styled from "styled-components";
 
 import { TasksContext } from "../../contexts/TasksContext";
+import { calcPercentage } from "../../utils/calcPercentage";
 
 export default function CircularBar() {
-  const {
-    tasksStatus: { total, completed }
-  } = useContext(TasksContext);
-  const percentage = completed && Math.round((100 * completed) / total);
+  const { tasksStatus } = useContext(TasksContext);
+  const percentage = calcPercentage({ ...tasksStatus });
   return (
     <Container>
       <CircularProgressbar

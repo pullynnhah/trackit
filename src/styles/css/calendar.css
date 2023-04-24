@@ -1,0 +1,36 @@
+.react-calendar {
+  border: none;
+  border-radius: 10px;
+}
+
+.react-calendar__tile {
+  position: relative;
+  padding: 5% 0;
+}
+
+.red-circle,
+.green-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.red-circle div,
+.green-circle div {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.red-circle div {
+  background: #ea5766;
+}
+
+.green-circle div {
+  background: #8cc654;
+}
+
+abbr {
+  z-index: 1;
+}

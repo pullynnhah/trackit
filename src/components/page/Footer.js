@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import CircularBar from "./CircularBar";
+
 export default function Footer() {
   return (
     <StyledFooter>
       <NavLink to="/habits">Hábitos</NavLink>
-      <NavLink to="/today">Hoje</NavLink>
+      <NavLink to="/today">
+        <CircularBar />
+      </NavLink>
       <NavLink to="/history">Histórico</NavLink>
     </StyledFooter>
   );

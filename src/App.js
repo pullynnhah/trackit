@@ -17,24 +17,24 @@ export default function App() {
   });
 
   // TODO: implement the percentage of the circular-progress-bar
-  const [tasksStatus, setTasksStatus] = useState({ total: 0, completed: 0 });
+  const [tasksStatus, setTasksStatus] = useState({ total: 10, completed: 6 });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+      <TasksContext.Provider value={{ tasksStatus, setTasksStatus }}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
 
-          <TasksContext.Provider value={{ tasksStatus, setTasksStatus }}>
             <Route path="/habits" element={<HabitsPage />} />
             <Route path="/today" element={<TodayPage />} />
             <Route path="/history" element={<HistoryPage />} />
-          </TasksContext.Provider>
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </TasksContext.Provider>
     </UserContext.Provider>
   );
 }

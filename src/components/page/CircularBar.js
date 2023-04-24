@@ -1,12 +1,13 @@
-import "react-circular-progressbar/dist/styles.css";
-
 import { useContext, useEffect } from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import styled from "styled-components";
 
-import { TasksContext } from "../../contexts/TasksContext";
-import { getTodayHabits } from "../../services/api";
+import styled from "styled-components";
+import "react-circular-progressbar/dist/styles.css";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+
 import { UserContext } from "../../contexts/UserContext";
+import { TasksContext } from "../../contexts/TasksContext";
+
+import { getTodayHabits } from "../../services/api";
 
 export default function CircularBar() {
   const { percentage, setPercentage } = useContext(TasksContext);

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import logo from "../../assets/logo.svg";
+
 import AuthForm from "./AuthForm";
 
 export default function AuthPage({

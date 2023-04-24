@@ -1,13 +1,17 @@
 import { useContext } from "react";
-import { IconContext } from "react-icons";
-import { BsTrash } from "react-icons/bs";
+
 import styled from "styled-components";
+import { BsTrash } from "react-icons/bs";
+import { IconContext } from "react-icons";
 
 import { UserContext } from "../../contexts/UserContext";
-import { deleteHabit, getTodayHabits } from "../../services/api";
-import Weekdays from "./Weekdays";
-import { HabitTitle } from "../../styles/HabitTitle";
 import { TasksContext } from "../../contexts/TasksContext";
+
+import Weekdays from "./Weekdays";
+
+import { deleteHabit, getTodayHabits } from "../../services/api";
+
+import { HabitTitle } from "../../styles/HabitTitle";
 
 export default function Habit({ id, name, days, getHabits }) {
   const { setPercentage } = useContext(TasksContext);

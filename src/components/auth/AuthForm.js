@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-import { Input } from "../../styles/Input";
 import DotsLoader from "../DotsLoader";
+
+import { Input } from "../../styles/Input";
 
 export default function AuthForm({ fields, btnText, isLoading, form, handleForm, handleSubmit }) {
   return (

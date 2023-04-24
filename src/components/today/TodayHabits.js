@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import HabitCard from "./HabitCard";
 
 export default function TodayHabits({ habits, getHabits }) {

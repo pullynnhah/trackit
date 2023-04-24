@@ -1,12 +1,16 @@
 import { useContext, useState } from "react";
+
 import styled from "styled-components";
 
 import { UserContext } from "../../contexts/UserContext";
-import { createHabit, getTodayHabits } from "../../services/api";
-import { Input } from "../../styles/Input";
+import { TasksContext } from "../../contexts/TasksContext";
+
 import DotsLoader from "../DotsLoader";
 import WeekdaysButtons from "./WeekdaysButtons";
-import { TasksContext } from "../../contexts/TasksContext";
+
+import { createHabit, getTodayHabits } from "../../services/api";
+
+import { Input } from "../../styles/Input";
 
 export default function NewHabitForm({
   newHabit,

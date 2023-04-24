@@ -1,8 +1,11 @@
 import { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
-import { IconContext } from "react-icons";
-import { BsCheck } from "react-icons/bs";
+
 import styled from "styled-components";
+import { BsCheck } from "react-icons/bs";
+import { IconContext } from "react-icons";
+
+import { UserContext } from "../../contexts/UserContext";
+
 import { toggleHabit } from "../../services/api";
 
 export default function Icon({ id, done, getHabits }) {

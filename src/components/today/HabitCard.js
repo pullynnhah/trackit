@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { HabitTitle } from "../../styles/HabitTitle";
+
 import Icon from "./Icon";
+
+import { HabitTitle } from "../../styles/HabitTitle";
 
 export default function HabitCard({ id, name, done, currentSequence, highestSequence, getHabits }) {
   return (

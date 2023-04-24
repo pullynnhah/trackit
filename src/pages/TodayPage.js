@@ -17,8 +17,6 @@ import { getTodayHabits } from "../services/api";
 
 import { PageTitle } from "../styles/PageTitle";
 
-import { calcPercentage } from "../utils/calcPercentage";
-
 export default function TodayPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [habits, setHabits] = useState(null);

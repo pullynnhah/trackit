@@ -1,5 +1,5 @@
-import { Watch } from "react-loader-spinner";
 import styled from "styled-components";
+import { Watch } from "react-loader-spinner";
 
 export default function Loader() {
   return (

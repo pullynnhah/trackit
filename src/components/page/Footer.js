@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import CircularBar from "./CircularBar";
-import { useEffect } from "react";
 
 export default function Footer() {
   return (

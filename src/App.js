@@ -1,14 +1,16 @@
 import { useState } from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { TasksContext } from "./contexts/TasksContext";
 import { UserContext } from "./contexts/UserContext";
-import HabitsPage from "./pages/HabitsPage";
-import HistoryPage from "./pages/HistoryPage";
+import { TasksContext } from "./contexts/TasksContext";
+
 import LoginPage from "./pages/LoginPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import SignupPage from "./pages/SignupPage";
 import TodayPage from "./pages/TodayPage";
+import HabitsPage from "./pages/HabitsPage";
+import SignupPage from "./pages/SignupPage";
+import HistoryPage from "./pages/HistoryPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   const [user, setUser] = useState(() => {

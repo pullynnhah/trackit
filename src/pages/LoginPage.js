@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import AuthPage from "../components/auth/AuthPage";
+
 import { LOGIN_FIELDS } from "../constants/fields";
+
 import { UserContext } from "../contexts/UserContext";
+
 import { login } from "../services/api";
 
 export default function LoginPage() {

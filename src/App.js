@@ -10,7 +10,6 @@ import TodayPage from "./pages/TodayPage";
 import HabitsPage from "./pages/HabitsPage";
 import SignupPage from "./pages/SignupPage";
 import HistoryPage from "./pages/HistoryPage";
-import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   const [user, setUser] = useState(() => {
@@ -31,8 +30,6 @@ export default function App() {
             <Route path="/habits" element={<HabitsPage />} />
             <Route path="/today" element={<TodayPage />} />
             <Route path="/history" element={<HistoryPage />} />
-
-            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </TasksContext.Provider>
